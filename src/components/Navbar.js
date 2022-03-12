@@ -3,15 +3,15 @@ import React from 'react';
 const Navbar = () => {
 
     return (
-        <div>
+        <div style={{ background: "#38362D"}} >
             <nav>
-                <h3  style={{ display: 'inline-block' }}>Ancestry</h3>
+                <h3  style={{ display: 'inline-block', color: '#fff' }}>Ancestry</h3>
                 <ul style={{ listStyleType: "none", display: 'inline-block' }}>
-                    <li style={{ display: 'inline-block' }}>Home</li>
-                    <li style={{ display: 'inline-block' }}>DNA</li>
-                    <li style={{ display: 'inline-block' }}>Tree Page</li>
-                    <li style={{ display: 'inline-block' }}>Search</li>
-                    <li style={{ display: 'inline-block' }}>Extras</li>
+                    <li style={{ display: 'inline-block', color: '#fff' }}>Home</li>
+                    <li style={{ display: 'inline-block', color: '#fff' }}>DNA</li>
+                    <li style={{ display: 'inline-block', color: '#fff' }}>Tree Page</li>
+                    <li style={{ display: 'inline-block', color: '#fff' }}>Search</li>
+                    <li style={{ display: 'inline-block', color: '#fff' }}>Extras</li>
                 </ul>
             </nav>
         </div>
