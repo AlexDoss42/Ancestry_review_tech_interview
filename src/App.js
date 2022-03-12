@@ -1,12 +1,28 @@
 import Navbar from "./components/Navbar";
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import DNA from "./pages/DNA";
+import Tree from "./pages/Tree";
+import Search from "./pages/Search";
+import Extras from "./pages/Extras";
+import Survey from "./pages/Survey";
+import Thankyou from "./pages/Thankyou";
 
 function App() {
-  console.log(111, window.location.href)
   return (
-    <div className="App">
+    <Router>
       <Navbar />
-    </div>
+      <Routes>
+        <Route path="/" element={<Home />}/>
+        <Route path="/dna" element={<DNA />}/>
+        <Route path="/tree" element={<Tree />}/>
+        <Route path="/search" element={<Search />}/>
+        <Route path="/extras" element={<Extras />}/>
+        <Route path="/survey" element={<Survey />}/>
+        <Route path="/thankyou" element={<Thankyou />}/>
+      </Routes>
+    </Router>
+    
   );
 }
 

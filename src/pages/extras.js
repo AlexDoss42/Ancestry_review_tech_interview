@@ -1,9 +1,9 @@
 import React from 'react';
 
-const extras = () => {
+const Extras = () => {
     return (
-        <h1>This is the extras page</h1>
+        <h1>This is the Extras page</h1>
     )
 };
 
-export default extras;
+export default Extras;

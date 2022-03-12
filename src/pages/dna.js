@@ -1,9 +1,9 @@
 import React from 'react';
 
-const dna = () => {
+const DNA = () => {
     return (
-        <h1>This is the dna page</h1>
+        <h1>This is the DNA page</h1>
     )
 };
 
-export default dna;
+export default DNA;
