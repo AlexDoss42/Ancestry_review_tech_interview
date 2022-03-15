@@ -1,10 +1,9 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { PageContext } from '../Contexts/PageContext';
-// import { useNavigate } from 'react-router-dom';
 
 const Thankyou = () => {
     const { path } = useContext(PageContext);
-    // const navigate = useNavigate();
 
     const onClose = async () => {
         console.log('on Close');
@@ -19,7 +18,7 @@ const Thankyou = () => {
             <button onClick={() => onClose()}>Leave Browser</button>
             <button onClick={() => window.close()}>Close Browser</button>
             {/* WE are going to want to change that to the redux value for the page they hit the link for */}
-            {/* <button onClick={()=> navigate(window.location.href)}>Return to your page</button> */}
+            <Link to={path}>Return to your page</Link>
         </>
     )
 };
