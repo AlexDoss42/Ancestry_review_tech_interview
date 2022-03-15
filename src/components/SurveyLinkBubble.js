@@ -4,16 +4,16 @@ import { PageContext } from "../Contexts/PageContext";
 
 
 const SurveyLinkBubble = () => {
-    const { setOrigin_page, setPath } = useContext(PageContext);
+    const { setOrigin_page, setPath, path, origin_page } = useContext(PageContext);
     const location = useLocation();
 
     useEffect(() => {
-        
-    }, [setOrigin_page, setPath, location.pathname])
+        console.log('useEffect Fired', path, origin_page);
+        setPath(location.pathname);
+        setOrigin_page(window.location.href);
+    }, [])
     
     const surveyHandler = async () => {
-        await setPath(location.pathname);
-        await setOrigin_page(window.location.href);
         window.location = "/survey"
     }
 
