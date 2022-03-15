@@ -1,18 +1,19 @@
 import React, { useState, useMemo, useContext } from 'react';
-import { PageContext  } from '../Contexts/PageContext';
+import { PageContext } from '../Contexts/PageContext';
 import Select from 'react-select'
 import countryList from 'react-select-country-list'
+import StarRating from '../components/StarRating';
 
 const Survey = () => {
-
+    const { origin_page } = useContext(PageContext);
     const [customer_name, setCustomer_name] = useState('');
     const [email, setEmail] = useState('');
-    const [age, setAge] = useState(null);
+    const [age, setAge] = useState(18);
     const [gender, setGender] = useState('');
-    const [country, setCountry] = useState('')
-    const [experience_rating, setExperience_rating] = useState(null);
+    const [displayCountry, setDisplayCountry] = useState('');
+    const [country, setCountry] = useState('');
+    const [experience_rating, setExperience_rating] = useState(5);
     const [suggested_improvements, setSuggested_improvements] = useState('');
-    const {origin_page} = useContext(PageContext);
     
     const options = useMemo(() => countryList().getData(), [])
 
@@ -20,12 +21,12 @@ const Survey = () => {
         e.preventDefault();
         try {
             const body = { customer_name, email, age, gender, country, experience_rating, suggested_improvements, origin_page };
-            await fetch("http://localhost:5000/survey", {
+            await fetch("http://localhost:5000/api/survey", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body)
             });
-
+            
             window.location = "/thankyou";
         } catch (error) {
             console.error(error.message);
@@ -33,7 +34,8 @@ const Survey = () => {
     }
 
     const countryHandler = country => {
-        setCountry(country)
+        setDisplayCountry(country);
+        setCountry(country.label);
       }
 
     return (
@@ -41,16 +43,16 @@ const Survey = () => {
             <h1>This is the Survey page</h1>
             <form onSubmit={onSubmitForm}>
 
-                <label>Name</label>
+                <p>Name</p>
                     <input type='text' value={customer_name} required onChange={e => setCustomer_name(e.target.value)}/>
 
-                <label>Email</label>
+                <p>Email</p>
                     <input type='email' required value={email} onChange={e => setEmail(e.target.value)}/>
 
-                <label>Age</label>
+                <p>Age</p>
                     <input type="number" value={age} onChange={e => setAge(e.target.value)}/>
 
-                <label>Gender</label>
+                <p>Gender</p>
                     <select value={gender} onChange={e => setGender(e.target.value)}>
                         <option value="">--Please choose an option--</option>
                         <option value="male">Male</option>
@@ -58,16 +60,16 @@ const Survey = () => {
                         <option value="pnta">Prefer not to answer</option>
                     </select>
 
-                <label>Country</label>
-                    <Select options={options} value={country} onChange={countryHandler} />
+                <p>Country</p>
+                    <Select options={options} value={displayCountry} onChange={countryHandler} />
 
-                <label>Rating</label>
-                    {/* I'll add this later */}
+                <p>Rating</p>
+                    <StarRating experience_rating={experience_rating} setExperience_rating={setExperience_rating} />
                 
-                <label>Suggested Improvements</label>
+                <p>Suggested Improvements</p>
                     <textarea value={suggested_improvements} onChange={e => setSuggested_improvements(e.target.value)} />
+                <button>Submit</button>
             </form>
-            <button>Submit</button>
         </div>
     )
 };

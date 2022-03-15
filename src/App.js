@@ -13,23 +13,24 @@ import { PageContext } from './Contexts/PageContext';
 
 function App() {
   const [origin_page, setOrigin_page] = useState('');
-  const [path, setPath] = useState('')
+  const [path, setPath] = useState('');
+
   return (
-    <Router>
-      <Navbar />
-      <PageContext.Provider value={{ origin_page, setOrigin_page, path, setPath }}>
-        <Routes>
-          <Route path="/" element={<Home />}/>
-          <Route path="/dna" element={<DNA />}/>
-          <Route path="/tree" element={<Tree />}/>
-          <Route path="/search" element={<Search />}/>
-          <Route path="/extras" element={<Extras />}/>
-          <Route path="/survey" element={<Survey />}/>
-          <Route path="/thankyou" element={<Thankyou />}/>
-          <Route path="/surveyData" element={<SurveyData />}/>
-        </Routes>
-      </PageContext.Provider>
-    </Router>
+        <Router>
+          <PageContext.Provider value={{ origin_page, setOrigin_page, path, setPath }}>
+          <Navbar />
+            <Routes>
+              <Route path="/" element={<Home />}/>
+              <Route path="/dna" element={<DNA />}/>
+              <Route path="/tree" element={<Tree />}/>
+              <Route path="/search" element={<Search />}/>
+              <Route path="/extras" element={<Extras />}/>
+              <Route path="/survey" element={<Survey />}/>
+              <Route path="/thankyou" element={<Thankyou />}/>
+              <Route path="/surveyData" element={<SurveyData />}/>
+            </Routes>
+          </PageContext.Provider>
+        </Router>
     
   );
 }
