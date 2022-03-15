@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { PageContext } from '../Contexts/PageContext';
 // import { useNavigate } from 'react-router-dom';
 
 const Thankyou = () => {
+    const { path } = useContext(PageContext);
     // const navigate = useNavigate();
 
     const onClose = async () => {

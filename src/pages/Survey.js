@@ -15,7 +15,7 @@ const Survey = () => {
     const [experience_rating, setExperience_rating] = useState('');
     const [suggested_improvements, setSuggested_improvements] = useState('');
     
-    const options = useMemo(() => countryList().getData(), [])
+    const options = useMemo(() => countryList().getData(), []);
 
     const onSubmitForm = async (e) => {
         e.preventDefault();

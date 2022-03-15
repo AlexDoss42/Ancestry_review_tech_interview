@@ -1,19 +1,9 @@
-import React, { useContext, useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import { PageContext } from "../Contexts/PageContext";
+import React from "react";
 
+const SurveyLinkBubble = ({ dispatch }) => {
 
-const SurveyLinkBubble = () => {
-    const { setOrigin_page, setPath, path, origin_page } = useContext(PageContext);
-    const location = useLocation();
-
-    useEffect(() => {
-        console.log('useEffect Fired', path, origin_page);
-        setPath(location.pathname);
-        setOrigin_page(window.location.href);
-    }, [])
     
-    const surveyHandler = async () => {
+    const surveyHandler = () => {
         window.location = "/survey"
     }
 
