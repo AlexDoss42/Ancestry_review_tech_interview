@@ -8,11 +8,11 @@ const Survey = () => {
     const { origin_page } = useContext(PageContext);
     const [customer_name, setCustomer_name] = useState('');
     const [email, setEmail] = useState('');
-    const [age, setAge] = useState(18);
+    const [age, setAge] = useState('');
     const [gender, setGender] = useState('');
     const [displayCountry, setDisplayCountry] = useState('');
     const [country, setCountry] = useState('');
-    const [experience_rating, setExperience_rating] = useState(5);
+    const [experience_rating, setExperience_rating] = useState('');
     const [suggested_improvements, setSuggested_improvements] = useState('');
     
     const options = useMemo(() => countryList().getData(), [])
