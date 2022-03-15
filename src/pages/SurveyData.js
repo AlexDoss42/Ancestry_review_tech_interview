@@ -2,7 +2,8 @@ import React, { useEffect, useState} from 'react';
 
 const SurveyData = () => {
 
-    const [surveyData, SetSurveyData] = useState([])
+    const [surveyData, SetSurveyData] = useState([]);
+    const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
         getSurveyData();
@@ -11,27 +12,34 @@ const SurveyData = () => {
     const getSurveyData = async() => {
         try {
             const response = await fetch('http://localhost:5000/api/data');
-            console.log(111, response);
             const jsonData = await response.json();
-            console.log(222, jsonData)
             SetSurveyData(jsonData);
-
+            setLoaded(true);
         } catch (err) {
-            console.log(err.message);
             console.error(err.message);
         }
     }
 
-    return (
-        <div>
-            <label>Average Age of Responders</label>
-            <label>Average Experience Rating</label>
-            <label>Gender Distribution</label>
-            <label>Country Distribution</label>
-            <label>Total Number of Responses</label>
+    if(loaded === false) {
+        return <div>Loading...</div>
+    } else {
+        return (
+            <div>
+                <p>Total Number of Responses: {surveyData.numbersData.total_responses}</p>
+                <p>Average Age of Responders: {surveyData.numbersData.average_age}</p>
+                <p>Average Experience Rating: {surveyData.numbersData.average_rating}</p>
+                <p>Gender Distribution</p>
+                {surveyData.genderDistributionData.map(gender => (
+                    <p>{gender.gender}: {gender.count}</p>
+                ))}
+                <p>Country Distribution</p>
+                {surveyData.countryDistributionData.map(country => (
+                    <p>{country.country}: {country.count}</p>
+                ))}
+            </div>
+        )
+    }
 
-        </div>
-    )
 }
 
 export default SurveyData;

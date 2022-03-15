@@ -26,9 +26,9 @@ app.get("/api/data", async(req, res) => {
     try {
         const numbersData = await pool.query("SELECT AVG(experience_rating) as average_rating, AVG(age) as average_age, COUNT(*) as total_responses FROM results;");
         surveyData.numbersData = numbersData.rows[0];
-        const countryDistributionData = await pool.query("select country, count(country) from results group by country;")
+        const countryDistributionData = await pool.query("select country, count(country) as count from results group by country order by count DESC;")
         surveyData.countryDistributionData = countryDistributionData.rows;
-        const genderDistributionData = await pool.query("SELECT gender, count(gender) FROM results group by gender;")
+        const genderDistributionData = await pool.query("SELECT gender, count(gender) as count FROM results group by gender order by count DESC;")
         surveyData.genderDistributionData = genderDistributionData.rows;
         res.json(surveyData);
     } catch (error) {
