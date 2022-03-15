@@ -7,6 +7,7 @@ import Search from "./pages/Search";
 import Extras from "./pages/Extras";
 import Survey from "./pages/Survey";
 import Thankyou from "./pages/Thankyou";
+import SurveyData from "./pages/SurveyData";
 
 function App() {
   console.log(1111, window.location.href);
@@ -21,6 +22,7 @@ function App() {
         <Route path="/extras" element={<Extras />}/>
         <Route path="/survey" element={<Survey />}/>
         <Route path="/thankyou" element={<Thankyou />}/>
+        <Route path="/surveyData" element={<SurveyData />}/>
       </Routes>
     </Router>
     

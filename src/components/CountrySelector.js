@@ -13,4 +13,4 @@ function CountrySelector() {
   return <Select options={options} value={value} onChange={changeHandler} />
 }
 
-export default CountrySelector
+export default CountrySelector;

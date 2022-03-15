@@ -20,9 +20,15 @@ app.post("/survey", async(req, res) => {
 // GET SURVEY DATA
 
 app.get("/data", async(req, res) => {
+    const surveyData = []
     try {
-        const surveyData = await pool.query("SELECT * FROM results");
-        res.json(surveyData.rows)
+        const numbersData = await pool.query("SELECT AVG(experience_rating) as average_rating, AVG(age) as average_age, COUNT(*) as total_responses FROM results;");
+        surveyData.push(...numbersData.rows);
+        const genderDistributionData = await pool.query("SELECT gender, count(gender) FROM results group by gender;")
+        surveyData.push(...genderDistributionData.rows);
+        const countryDistributionData = await pool.query("select country, count(country) from results group by country;")
+        surveyData.push(...countryDistributionData.rows);
+        res.json(surveyData);
     } catch (error) {
         console.error(error.message);
     }
