@@ -1,4 +1,4 @@
-{   
+{  
     "customer_name": "Bruce Wayne",
     "email": "theDarkKnight@wayneEnterprises.com",
     "age": 28,
@@ -7,8 +7,8 @@
     "experience_rating": 1,
     "suggested_improvements": "I'm Vengeance",
     "origin_page": "http://localhost:3000/dna"
- }
- {
+    }
+{
     "customer_name": "Ted Lasso",
     "email": "tlasso@afcrichmond.com",
     "age": 46,
@@ -16,5 +16,15 @@
     "country": "United Kingdom",
     "experience_rating": 5,
     "suggested_improvement": "Insert toxically over-positive comment",
+    "origin_page": "http://localhost:3000/dna"
+}
+{
+    "customer_name": "Selina Kyle",
+    "email": "theCat@gotham.com",
+    "age": 28,
+    "gender": "female",
+    "country": "United States",
+    "experience_rating": 3,
+    "suggested_improvements": "clever comment",
     "origin_page": "http://localhost:3000/dna"
 }

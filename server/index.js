@@ -2,16 +2,6 @@ const express = require("express");
 const app = express();
 const pool = require("./db");
 
-const dummyData = {
-    customer_name: "Ted Lasso",
-    email: "tlasso@afcrichmond.com",
-    age: 46,
-    gender: "male",
-    country: "United Kingdom",
-    experience_rating: 5,
-    suggested_improvement: "Insert toxically over-positive comment",
-    origin_page: "http://localhost:3000/dna"
-}
 //middleware
 app.use(express.json());
 
