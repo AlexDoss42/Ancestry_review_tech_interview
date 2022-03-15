@@ -1,8 +1,12 @@
 import React from 'react';
+import SurveyLinkBubble from '../components/SurveyLinkBubble';
 
 const DNA = () => {
     return (
-        <h1>This is the DNA page</h1>
+        <div>
+            <h1>This is the DNA page</h1>
+            <SurveyLinkBubble />
+        </div>
     )
 };
 

@@ -37,36 +37,6 @@ app.get("/api/data", async(req, res) => {
     }
 } )
 
-// app.get("/api/data/average", async(req, res) => {
-//     try {
-//         const numbersData = await pool.query("SELECT AVG(experience_rating) as average_rating, AVG(age) as average_age, COUNT(*) as total_responses FROM results;");
-//         res.json(numbersData.rows);
-//     } catch (error) {
-//         console.log(error.message);
-//         console.error(error.message);
-//     }
-// })
-
-// app.get("/api/data/country", async(req, res) => {
-//     try {
-//         const countryDistributionData = await pool.query("select country, count(country) from results group by country;")
-//         res.json(countryDistributionData.rows);
-//     } catch (error) {
-//         console.log(error.message);
-//         console.error(error.message);
-//     }
-// })
-
-// app.get("/api/data/gender", async(req, res) => {
-//     try {
-//         const genderDistributionData = await pool.query("SELECT gender, count(gender) FROM results group by gender;")
-//         res.json(genderDistributionData.rows);
-//     } catch (error) {
-//         console.log(error.message);
-//         console.error(error.message);
-//     }
-// })
-
 
 app.listen(5000, () => {
     console.log('ITS WORKING!!!! IIIITTTTTSSSS WORKING!!!! on port 5000')

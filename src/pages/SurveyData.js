@@ -29,13 +29,21 @@ const SurveyData = () => {
                 <p>Average Age of Responders: {surveyData.numbersData.average_age}</p>
                 <p>Average Experience Rating: {surveyData.numbersData.average_rating}</p>
                 <p>Gender Distribution</p>
-                {surveyData.genderDistributionData.map(gender => (
-                    <p>{gender.gender}: {gender.count}</p>
-                ))}
+                <ul>
+                    {surveyData.genderDistributionData.map(gender => (
+                        <li key={gender.gender}>
+                            <p>{gender.gender}: {gender.count}</p>
+                        </li>
+                    ))}
+                </ul>
                 <p>Country Distribution</p>
-                {surveyData.countryDistributionData.map(country => (
-                    <p>{country.country}: {country.count}</p>
-                ))}
+                <ul>
+                    {surveyData.countryDistributionData.map(country => (
+                        <li key={country.county}>
+                            <p>{country.country}: {country.count}</p>
+                        </li>
+                    ))}
+                </ul>
             </div>
         )
     }

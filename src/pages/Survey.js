@@ -1,4 +1,5 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useContext } from 'react';
+import { PageContext  } from '../Contexts/PageContext';
 import Select from 'react-select'
 import countryList from 'react-select-country-list'
 
@@ -11,7 +12,7 @@ const Survey = () => {
     const [country, setCountry] = useState('')
     const [experience_rating, setExperience_rating] = useState(null);
     const [suggested_improvements, setSuggested_improvements] = useState('');
-    const origin_page = null;
+    const {origin_page} = useContext(PageContext);
     
     const options = useMemo(() => countryList().getData(), [])
 

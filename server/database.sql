@@ -13,5 +13,5 @@ CREATE TABLE results(
 );
 
 SELECT AVG(experience_rating) as average_rating, AVG(age) as average_age, COUNT(*) as total_responses FROM results;
-SELECT gender, count(gender) FROM results group by gender;
-select country, count(country) from results group by country;
+SELECT gender, count(gender) as count FROM results group by gender order by count DESC;
+SELECT country, count(country) as count FROM results group by country order by count DESC;
