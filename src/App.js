@@ -9,6 +9,7 @@ import Survey from "./pages/Survey";
 import Thankyou from "./pages/Thankyou";
 
 function App() {
+  console.log(1111, window.location.href);
   return (
     <Router>
       <Navbar />

@@ -7,6 +7,7 @@ CREATE TABLE results(
     age SMALLINT,
     gender VARCHAR(55),
     country VARCHAR(55),
+    experience_rating SMALLINT,
     suggested_improvements TEXT,
     origin_page VARCHAR(255)
 );

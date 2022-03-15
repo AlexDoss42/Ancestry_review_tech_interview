@@ -1,0 +1,20 @@
+{   
+    "customer_name": "Bruce Wayne",
+    "email": "theDarkKnight@wayneEnterprises.com",
+    "age": 28,
+    "gender": "male",
+    "country": "United States",
+    "experience_rating": 1,
+    "suggested_improvements": "I'm Vengeance",
+    "origin_page": "http://localhost:3000/dna"
+ }
+ {
+    "customer_name": "Ted Lasso",
+    "email": "tlasso@afcrichmond.com",
+    "age": 46,
+    "gender": "male",
+    "country": "United Kingdom",
+    "experience_rating": 5,
+    "suggested_improvement": "Insert toxically over-positive comment",
+    "origin_page": "http://localhost:3000/dna"
+}
