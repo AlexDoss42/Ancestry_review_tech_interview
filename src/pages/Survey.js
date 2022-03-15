@@ -9,8 +9,9 @@ const Survey = () => {
     const [age, setAge] = useState(null);
     const [gender, setGender] = useState('');
     const [country, setCountry] = useState('')
+    const [experience_rating, setExperience_rating] = useState(null);
     const [suggested_improvements, setSuggested_improvements] = useState('');
-    
+    const origin_page = null;
     
     const options = useMemo(() => countryList().getData(), [])
 

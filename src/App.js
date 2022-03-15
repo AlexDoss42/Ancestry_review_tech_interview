@@ -10,7 +10,6 @@ import Thankyou from "./pages/Thankyou";
 import SurveyData from "./pages/SurveyData";
 
 function App() {
-  console.log(1111, window.location.href);
   return (
     <Router>
       <Navbar />
