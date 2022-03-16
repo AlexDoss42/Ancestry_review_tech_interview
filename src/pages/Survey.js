@@ -1,8 +1,7 @@
-import React, { useState, useMemo, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { PageContext } from '../Contexts/PageContext';
-import Select from 'react-select'
-import countryList from 'react-select-country-list'
 import StarRating from '../components/StarRating';
+import CountrySelector from '../components/CountrySelector';
 
 const Survey = () => {
     const { origin_page } = useContext(PageContext);
@@ -14,8 +13,6 @@ const Survey = () => {
     const [country, setCountry] = useState('');
     const [experience_rating, setExperience_rating] = useState('');
     const [suggested_improvements, setSuggested_improvements] = useState('');
-    
-    const options = useMemo(() => countryList().getData(), []);
 
     const onSubmitForm = async (e) => {
         e.preventDefault();
@@ -60,7 +57,7 @@ const Survey = () => {
                     </select>
 
                 <p>Country</p>
-                    <Select options={options} value={displayCountry} onChange={countryHandler} />
+                    <CountrySelector countryHandler={countryHandler} displayCountry={displayCountry} />
 
                 <p>Rating</p>
                     <StarRating experience_rating={experience_rating} setExperience_rating={setExperience_rating} />
