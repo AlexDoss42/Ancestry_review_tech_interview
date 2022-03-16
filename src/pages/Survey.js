@@ -36,13 +36,13 @@ const Survey = () => {
 
     return (
         <div>
-            <h1>This is the Survey page</h1>
+            <h1>Thank you for helping us improve the site for you!</h1>
+            
             <form onSubmit={onSubmitForm}>
-
-                <p>Name</p>
+                <p>Name *REQUIRED</p>
                     <input type='text' value={customer_name} required onChange={e => setCustomer_name(e.target.value)}/>
 
-                <p>Email</p>
+                <p>Email *REQUIRED</p>
                     <input type='email' required value={email} onChange={e => setEmail(e.target.value)}/>
 
                 <p>Age</p>
