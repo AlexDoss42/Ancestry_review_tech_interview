@@ -1,11 +1,11 @@
-import React, { useState, useMemo, useContext } from 'react';
+import React, { useState, useMemo, useContext, useEffect } from 'react';
 import { PageContext } from '../Contexts/PageContext';
 import Select from 'react-select'
 import countryList from 'react-select-country-list'
 import StarRating from '../components/StarRating';
 
 const Survey = () => {
-    const { origin_page } = useContext(PageContext);
+    const { origin_page, path } = useContext(PageContext);
     const [customer_name, setCustomer_name] = useState('');
     const [email, setEmail] = useState('');
     const [age, setAge] = useState('');
@@ -16,6 +16,10 @@ const Survey = () => {
     const [suggested_improvements, setSuggested_improvements] = useState('');
     
     const options = useMemo(() => countryList().getData(), []);
+
+    useEffect(() => {
+        console.log(1234, origin_page, path)
+    }, [origin_page])
 
     const onSubmitForm = async (e) => {
         e.preventDefault();
