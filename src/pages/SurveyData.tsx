@@ -1,9 +1,29 @@
 import React, { useEffect, useState} from 'react';
 
-const SurveyData = () => {
+interface numbersDataInterface {
+    total_responses: number,
+    average_age: number,
+    average_rating: number
+}
 
-    const [surveyData, SetSurveyData] = useState([]);
-    const [loaded, setLoaded] = useState(false);
+interface surveyDataInterface {
+    countryDistributionData: [],
+    genderDistrubtionData: [],
+    numbersDataInterface
+}
+
+const SurveyData = (): JSX.Element => {
+
+    const [surveyData, SetSurveyData] = useState({
+        countryDistributionData: [],
+        genderDistributionData: [],
+        numbersData: {
+            total_responses: 0,
+            average_age: 0,
+            average_rating: 0
+        }
+    });
+    const [loaded, setLoaded] = useState<boolean>(false);
 
     useEffect(() => {
         getSurveyData();
@@ -15,6 +35,7 @@ const SurveyData = () => {
             const jsonData = await response.json();
             SetSurveyData(jsonData);
             setLoaded(true);
+            console.log(1234, jsonData);
         } catch (err) {
             console.error(err.message);
         }
