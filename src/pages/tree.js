@@ -11,6 +11,7 @@ const Tree = () => {
     useEffect(() => {
         setOriginPage(url);
         setPath(path);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [path, url]);
     
     return (

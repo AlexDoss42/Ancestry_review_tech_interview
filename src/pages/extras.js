@@ -11,7 +11,7 @@ const Extras = () => {
     useEffect(() => {
         setOriginPage(url);
         setPath(path);
-    }, [path, url]);
+    }, [path, setOriginPage, setPath, url]);
 
     return (
         <div>
