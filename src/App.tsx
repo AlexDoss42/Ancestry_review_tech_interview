@@ -11,7 +11,7 @@ import SurveyData from "./pages/SurveyData";
 
 import { PageProvider } from './Contexts/PageContext'
 
-function App() {
+function App(): JSX.Element {
   
   return (
       <PageProvider>
