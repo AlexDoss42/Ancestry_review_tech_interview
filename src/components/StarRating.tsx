@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 import './StarRating.css';
 
-const StarRating = ({ experience_rating, setExperience_rating }) => {
-    const [hover, setHover] = useState(null);
+const StarRating = ({ experience_rating, setExperience_rating }): JSX.Element => {
+    const [hover, setHover] = useState<number>(null);
     return (
         <div>
             {[...Array(5)].map((star, i) => {

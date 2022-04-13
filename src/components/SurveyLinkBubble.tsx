@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const SurveyLinkBubble = () => {
+const SurveyLinkBubble = (): JSX.Element => {
     return (
         <div>
             <p>We want to hear from you!</p>
