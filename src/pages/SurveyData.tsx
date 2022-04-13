@@ -1,20 +1,9 @@
 import React, { useEffect, useState} from 'react';
 
-interface numbersDataInterface {
-    total_responses: number,
-    average_age: number,
-    average_rating: number
-}
-
-interface surveyDataInterface {
-    countryDistributionData: [],
-    genderDistrubtionData: [],
-    numbersDataInterface
-}
 
 const SurveyData = (): JSX.Element => {
 
-    const [surveyData, SetSurveyData] = useState({
+    const [surveyData, SetSurveyData] = useState<surveyDataInterface>({
         countryDistributionData: [],
         genderDistributionData: [],
         numbersData: {
@@ -35,7 +24,6 @@ const SurveyData = (): JSX.Element => {
             const jsonData = await response.json();
             SetSurveyData(jsonData);
             setLoaded(true);
-            console.log(1234, jsonData);
         } catch (err) {
             console.error(err.message);
         }
@@ -60,7 +48,7 @@ const SurveyData = (): JSX.Element => {
                 <p>Country Distribution</p>
                 <ul>
                     {surveyData.countryDistributionData.map(country => (
-                        <li key={country.county}>
+                        <li key={country.country}>
                             <p>{country.country}: {country.count}</p>
                         </li>
                     ))}
@@ -73,3 +61,24 @@ const SurveyData = (): JSX.Element => {
 
 export default SurveyData;
 
+interface countryInterface {
+    country: string,
+    count: string
+}
+
+interface genderInterface {
+    gender: string,
+    count: string
+}
+
+interface numbersDataInterface {
+    total_responses: number,
+    average_age: number,
+    average_rating: number
+}
+
+interface surveyDataInterface {
+    countryDistributionData: countryInterface[],
+    genderDistributionData: genderInterface[],
+    numbersData: numbersDataInterface
+}
