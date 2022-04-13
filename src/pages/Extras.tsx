@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar';
 import SurveyLinkBubble from '../components/SurveyLinkBubble';
 import { PageContext } from '../Contexts/PageContext';
 
-const Extras = () => {
+const Extras = (): JSX.Element => {
     const { setOriginPage, setPath } = useContext(PageContext);
     let url = JSON.stringify(window.location.href);
     let path = JSON.stringify(window.location.pathname);
