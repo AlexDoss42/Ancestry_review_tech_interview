@@ -3,20 +3,12 @@ import { PageContext } from '../Contexts/PageContext';
 import StarRating from '../components/StarRating';
 import CountrySelector from '../components/CountrySelector';
 
-interface surveyDataInterface {
-    customer_name: string,
-    email: string,
-    age: string,
-    gender: string,
-    country: string,
-    experience_rating: number,
-    suggested_improvements: string,
-    origin_page: string
-}
-
 const Survey = () => {
     const { origin_page } = useContext(PageContext);
-    const [displayCountry, setDisplayCountry] = useState('');
+    const [displayCountry, setDisplayCountry] = useState<displayCountryInterface>({
+        value: '',
+        label: ''
+    });
     const [surveyData, setSurveyData] = useState<surveyDataInterface>({
         customer_name: '',
         email: '',
@@ -45,6 +37,7 @@ const Survey = () => {
 
     const countryHandler = country => {
         const { label } = country;
+        console.log(213, country)
         setDisplayCountry(country);
         setSurveyData({...surveyData, country: label});
       }
@@ -86,3 +79,19 @@ const Survey = () => {
 };
 
 export default Survey;
+
+interface surveyDataInterface {
+    customer_name: string,
+    email: string,
+    age: string,
+    gender: string,
+    country: string,
+    experience_rating: number,
+    suggested_improvements: string,
+    origin_page: string
+}
+
+interface displayCountryInterface {
+    value: string,
+    label: string
+}
