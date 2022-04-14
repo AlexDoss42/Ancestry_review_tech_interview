@@ -3,35 +3,50 @@ import { PageContext } from '../Contexts/PageContext';
 import StarRating from '../components/StarRating';
 import CountrySelector from '../components/CountrySelector';
 
+interface surveyDataInterface {
+    customer_name: string,
+    email: string,
+    age: string,
+    gender: string,
+    country: string,
+    experience_rating: number,
+    suggested_improvements: string,
+    origin_page: string
+}
+
 const Survey = () => {
     const { origin_page } = useContext(PageContext);
-    const [customer_name, setCustomer_name] = useState('');
-    const [email, setEmail] = useState('');
-    const [age, setAge] = useState('');
-    const [gender, setGender] = useState('');
     const [displayCountry, setDisplayCountry] = useState('');
-    const [country, setCountry] = useState('');
-    const [experience_rating, setExperience_rating] = useState('');
-    const [suggested_improvements, setSuggested_improvements] = useState('');
+    const [surveyData, setSurveyData] = useState<surveyDataInterface>({
+        customer_name: '',
+        email: '',
+        age: '',
+        gender: '',
+        country: '',
+        experience_rating: 0,
+        suggested_improvements: '',
+        origin_page: origin_page
+    })
 
     const onSubmitForm = async (e) => {
         e.preventDefault();
         try {
-            const body = { customer_name, email, age, gender, country, experience_rating, suggested_improvements, origin_page };
+            const body = surveyData;
             await fetch("http://localhost:5000/api/survey", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body)
             });
-            window.location = "/thankyou";
+            window.location.href = "/thankyou";
         } catch (error) {
             console.error(error.message);
         }
     }
 
     const countryHandler = country => {
+        const { label } = country;
         setDisplayCountry(country);
-        setCountry(country.label);
+        setSurveyData({...surveyData, country: label});
       }
 
     return (
@@ -40,16 +55,16 @@ const Survey = () => {
             
             <form onSubmit={onSubmitForm}>
                 <p>Name *REQUIRED</p>
-                    <input type='text' value={customer_name} required onChange={e => setCustomer_name(e.target.value)}/>
+                    <input type='text' value={surveyData.customer_name} required onChange={e => setSurveyData({...surveyData, customer_name: e.target.value})}/>
 
                 <p>Email *REQUIRED</p>
-                    <input type='email' required value={email} onChange={e => setEmail(e.target.value)}/>
+                    <input type='email' required value={surveyData.email} onChange={e => setSurveyData({...surveyData, email: e.target.value})}/>
 
                 <p>Age</p>
-                    <input type="number" value={age} onChange={e => setAge(e.target.value)}/>
+                    <input type="number" value={surveyData.age} onChange={e => setSurveyData({...surveyData, age: e.target.value})}/>
 
                 <p>Gender</p>
-                    <select value={gender} onChange={e => setGender(e.target.value)}>
+                    <select value={surveyData.gender} onChange={e => setSurveyData({...surveyData, gender: e.target.value})}>
                         <option value="">--Please choose an option--</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
@@ -60,10 +75,10 @@ const Survey = () => {
                     <CountrySelector countryHandler={countryHandler} displayCountry={displayCountry} />
 
                 <p>Rating</p>
-                    <StarRating experience_rating={experience_rating} setExperience_rating={setExperience_rating} />
+                    <StarRating experience_rating={surveyData.experience_rating} setSurveyData={setSurveyData} surveyData={surveyData} />
                 
                 <p>Suggested Improvements</p>
-                    <textarea value={suggested_improvements} onChange={e => setSuggested_improvements(e.target.value)} />
+                    <textarea value={surveyData.suggested_improvements} onChange={e => setSurveyData({...surveyData, suggested_improvements: e.target.value})} />
                 <button>Submit</button>
             </form>
         </div>

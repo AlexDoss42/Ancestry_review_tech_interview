@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 import './StarRating.css';
 
-const StarRating = ({ experience_rating, setExperience_rating }): JSX.Element => {
+const StarRating = ({ experience_rating, setSurveyData, surveyData }): JSX.Element => {
     const [hover, setHover] = useState<number>(null);
     return (
         <div>
@@ -14,7 +14,7 @@ const StarRating = ({ experience_rating, setExperience_rating }): JSX.Element =>
                             type="radio" 
                             name="rating" 
                             value={ratingValue} 
-                            onClick={() => setExperience_rating(ratingValue)} 
+                            onClick={() => setSurveyData({...surveyData, experience_rating: ratingValue})} 
                             
                         />
                         <FaStar 
