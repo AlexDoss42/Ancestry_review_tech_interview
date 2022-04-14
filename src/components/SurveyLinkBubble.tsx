@@ -1,15 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { PageContext } from '../Contexts/PageContext';
 
 const SurveyLinkBubble = (): JSX.Element => {
+    
+    const { setOriginPage } = useContext(PageContext);
 
     let path: string = JSON.stringify(window.location.pathname);
+    let url: string = JSON.stringify(window.location.href);
 
     useEffect(() => {
+        setOriginPage(url);
         window.localStorage.setItem('path', path);
-        console.log(1234, "survey link bubble is firiing", path);
-
-      }, [path]);
+// eslint-disable-next-line react-hooks/exhaustive-deps
+      }, [url, path]);
 
 
     return (
