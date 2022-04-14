@@ -4,8 +4,7 @@ import AppReducer from './AppReducer';
 // Initial State
 
 const initialState = {
-    origin_page: '',
-    path: ''
+    origin_page: ''
 };
 
 // Create Context
@@ -26,18 +25,9 @@ function setOriginPage(url) {
     });
 };
 
-function setPath(path) {
-    dispatch({
-        type: 'setPath',
-        payload: path
-    })
-};
-
     return(<PageContext.Provider value={{
         origin_page: state.origin_page,
-        path: state.path,
-        setOriginPage: setOriginPage,
-        setPath: setPath
+        setOriginPage: setOriginPage
     }}>
         {children}
     </PageContext.Provider>)
