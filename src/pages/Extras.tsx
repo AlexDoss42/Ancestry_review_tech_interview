@@ -11,7 +11,8 @@ const Extras = (): JSX.Element => {
     useEffect(() => {
         setOriginPage(url);
         setPath(path);
-    }, [path, setOriginPage, setPath, url]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [path, url]);
 
     return (
         <div>

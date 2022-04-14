@@ -1,10 +1,15 @@
-import React, { useContext } from 'react';
+// import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { PageContext } from '../Contexts/PageContext';
+
 
 const Thankyou = () => {
-    // This is getting reset on form submission redux-persist is a possible solution
-    const { path } = useContext(PageContext);
+
+    const [path, setPath] = useState('');
+
+    useEffect(() => {
+        setPath(JSON.parse(window.localStorage.getItem('path')));
+      }, []);
 
     // it appears that you can only close a tab with scripts on windows you have opened. Stack overflow and a few sites suggested something like this but most likely wouldn't work across all broswers.  I would ask a senior/team for ideas but might push back on this one.
     const onClose = async () => {
