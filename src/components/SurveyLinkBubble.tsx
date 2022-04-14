@@ -2,6 +2,8 @@ import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { PageContext } from '../Contexts/PageContext';
 
+import './SurveyLinkBubble.css';
+
 const SurveyLinkBubble = (): JSX.Element => {
     
     const { setOriginPage } = useContext(PageContext);
@@ -17,7 +19,7 @@ const SurveyLinkBubble = (): JSX.Element => {
 
 
     return (
-        <div>
+        <div className="bubble-container">
             <p>We want to hear from you!</p>
             <p>Do you mind taking a quick survey to help us?</p>
             <Link to="/survey">Survey</Link>

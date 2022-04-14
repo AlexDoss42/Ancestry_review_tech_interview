@@ -1,0 +1,7 @@
+.bubble-container {
+    border: 1px solid black;
+    width: 250px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
