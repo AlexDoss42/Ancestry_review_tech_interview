@@ -12,7 +12,6 @@ app.use(express.json());
 app.post("/api/survey", async(req, res) => {
     try {
         const { customer_name, email, age, gender, country, experience_rating, suggested_improvements, origin_page } = req.body;
-        console.log(111, req.body)
         const newResults = await pool.query("INSERT INTO results (customer_name, email, age, gender, country, experience_rating, suggested_improvements, origin_page) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *", [customer_name, email, age, gender, country, experience_rating, suggested_improvements, origin_page]);
         res.json(newResults.rows[0]);
     } catch (error) {
