@@ -1,0 +1,23 @@
+.container {
+    background: #38362D
+}
+
+h3 {
+    display: inline-block;
+    color: #fff;
+    margin-left: 20px;
+}
+
+ul {
+    list-style-type: none;
+    display: inline-block;
+}
+
+li {
+    display: inline-block; 
+    margin-right: 10px;
+}
+
+.link {
+    color: #fff;
+}
