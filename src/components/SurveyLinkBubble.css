@@ -1,7 +1,19 @@
 .bubble-container {
-    border: 1px solid black;
     width: 250px;
     position: absolute;
     bottom: 20px;
     right: 20px;
+    text-align: center;
+    background-color: tan;
+    color: green;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.link {
+    color: white;
+    text-decoration: none;
+    background-color: green;
+    padding: 10px;
+    border-radius: 10px;
 }

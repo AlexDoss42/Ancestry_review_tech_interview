@@ -22,7 +22,7 @@ const SurveyLinkBubble = (): JSX.Element => {
         <div className="bubble-container">
             <p>We want to hear from you!</p>
             <p>Do you mind taking a quick survey to help us?</p>
-            <Link to="/survey">Survey</Link>
+            <Link className="link" to="/survey">Survey</Link>
         </div>
     )
 }
