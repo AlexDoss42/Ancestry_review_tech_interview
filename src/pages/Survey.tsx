@@ -3,6 +3,8 @@ import { PageContext } from '../Contexts/PageContext';
 import StarRating from '../components/StarRating';
 import CountrySelector from '../components/CountrySelector';
 
+import './Survey.css';
+
 const Survey = () => {
     const { origin_page } = useContext(PageContext);
     const [displayCountry, setDisplayCountry] = useState<displayCountryInterface>({
@@ -43,7 +45,7 @@ const Survey = () => {
       }
 
     return (
-        <div>
+        <div className='survey-container'>
             <h1>Thank you for helping us improve the site for you!</h1>
             
             <form onSubmit={onSubmitForm}>

@@ -1,0 +1,15 @@
+.survey-container {
+    max-width: 90vw;
+    margin: 20px 5vw;
+    text-align: center;
+}
+
+form {
+    text-align: left;
+    margin-top: 120px;
+}
+
+input {
+    width: 186px;
+    box-sizing: border-box;
+}
