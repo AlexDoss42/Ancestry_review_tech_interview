@@ -2,6 +2,8 @@ import React, { useState, useContext } from 'react';
 import { PageContext } from '../Contexts/PageContext';
 import StarRating from '../components/StarRating';
 import CountrySelector from '../components/CountrySelector';
+import validator from 'validator';
+
 
 import './Survey.css';
 
@@ -20,10 +22,17 @@ const Survey = () => {
         experience_rating: 0,
         suggested_improvements: '',
         origin_page: origin_page
-    })
+    });
+    const [errorMsg, setErrorMsg] = useState<string>("");
 
     const onSubmitForm = async (e) => {
         e.preventDefault();
+        if(surveyData.customer_name.length < 3) {
+            return setErrorMsg("Name is required")
+          } else if(!validator.isEmail(surveyData.email)) {
+            return setErrorMsg("the email you input is invalid.");
+          } 
+
         try {
             const body = surveyData;
             await fetch("http://localhost:5000/api/survey", {
@@ -73,6 +82,7 @@ const Survey = () => {
                 
                 <p>Suggested Improvements</p>
                     <textarea value={surveyData.suggested_improvements} onChange={e => setSurveyData({...surveyData, suggested_improvements: e.target.value})} />
+                    {errorMsg && <p>{errorMsg}</p>}
                 <button>Submit</button>
             </form>
         </div>
