@@ -39,7 +39,6 @@ const Survey = () => {
 
     const countryHandler = country => {
         const { label } = country;
-        console.log(213, country)
         setDisplayCountry(country);
         setSurveyData({...surveyData, country: label});
       }
