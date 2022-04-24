@@ -28,7 +28,7 @@ const Survey = () => {
     const onSubmitForm = async (e) => {
         e.preventDefault();
         if(surveyData.customer_name.length < 3) {
-            return setErrorMsg("Name is required")
+            return setErrorMsg("Name is required.")
           } else if(!validator.isEmail(surveyData.email)) {
             return setErrorMsg("the email you input is invalid.");
           } 
@@ -56,12 +56,12 @@ const Survey = () => {
         <div className='survey-container'>
             <h1>Thank you for helping us improve the site for you!</h1>
             
-            <form onSubmit={onSubmitForm}>
-                <p>Name *REQUIRED</p>
-                    <input type='text' value={surveyData.customer_name} required onChange={e => setSurveyData({...surveyData, customer_name: e.target.value})}/>
+            <form>
+                <label htmlFor="name">Name *REQUIRED</label>
+                    <input type='text' id="name" value={surveyData.customer_name} onChange={e => setSurveyData({...surveyData, customer_name: e.target.value})}/>
 
-                <p>Email *REQUIRED</p>
-                    <input type='email' required value={surveyData.email} onChange={e => setSurveyData({...surveyData, email: e.target.value})}/>
+                <label htmlFor="email">Email *REQUIRED</label>
+                    <input type='email' id="email" value={surveyData.email} onChange={e => setSurveyData({...surveyData, email: e.target.value})}/>
 
                 <p>Age</p>
                     <input type="number" value={surveyData.age} onChange={e => setSurveyData({...surveyData, age: e.target.value})}/>
@@ -83,7 +83,7 @@ const Survey = () => {
                 <p>Suggested Improvements</p>
                     <textarea value={surveyData.suggested_improvements} onChange={e => setSurveyData({...surveyData, suggested_improvements: e.target.value})} />
                     {errorMsg && <p>{errorMsg}</p>}
-                <button>Submit</button>
+                <button onClick={onSubmitForm}>Submit</button>
             </form>
         </div>
     )
