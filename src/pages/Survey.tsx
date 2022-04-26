@@ -32,7 +32,6 @@ const Survey = () => {
           } else if(!validator.isEmail(surveyData.email)) {
             return setErrorMsg("the email you input is invalid.");
           } 
-          console.log(123, 'still firing');
         try {
             const body = surveyData;
             await fetch("http://localhost:5000/api/survey", {

@@ -58,13 +58,21 @@ describe("Survey testing", () => {
       await clickSubmit();
       const errorMsgElement = screen.getByText(/the email you input is invalid./i);
       expect(errorMsgElement).toBeInTheDocument();
-  });
+    });
 
-  it("should show error messages if the email is not valid", async () => {
-    render(<Survey />);
-    await typeIntoForm({ name: 'miguel', email: 'miguelgmail.test' });
-    await clickSubmit();
-    const errorMsgElement = screen.getByText(/the email you input is invalid./i);
-    expect(errorMsgElement).toBeInTheDocument();
-});
+    it("should show error messages if the email is not valid", async () => {
+      render(<Survey />);
+      await typeIntoForm({ name: 'miguel', email: 'miguelgmail.test' });
+      await clickSubmit();
+      const errorMsgElement = screen.getByText(/the email you input is invalid./i);
+      expect(errorMsgElement).toBeInTheDocument();
+    });
+
+    it("should show no error messages if the name and valid email are entered", async () => {
+      render(<Survey />);
+      await typeIntoForm({ name: 'miguel', email: 'miguel@gmail.test' });
+      await clickSubmit();
+      const errorMsgElement = screen.queryByText(/the email you input is invalid./i);
+      expect(errorMsgElement).not.toBeInTheDocument();
+    });
 })
