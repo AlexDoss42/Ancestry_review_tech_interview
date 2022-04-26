@@ -7,7 +7,12 @@ import './CountrySelector.css';
 function CountrySelector({ countryHandler, displayCountry }): JSX.Element {
   const options = useMemo(() => countryList().getData(), [])
 
-  return <Select className='country-selector' options={options} value={displayCountry} onChange={countryHandler} />
+  return (
+    <>
+      <label htmlFor="country">Country</label>
+      <Select id="country" className='country-selector' options={options} value={displayCountry} onChange={countryHandler} />
+    </>
+  )
 }
 
 export default CountrySelector;

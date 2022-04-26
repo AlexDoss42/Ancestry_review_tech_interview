@@ -62,26 +62,26 @@ const Survey = () => {
                 <label htmlFor="email">Email *REQUIRED</label>
                     <input type='email' id="email" value={surveyData.email} onChange={e => setSurveyData({...surveyData, email: e.target.value})}/>
 
-                    <label htmlFor="age">Age</label>
+                <label htmlFor="age">Age</label>
                     <input type="number" id="age" value={surveyData.age} onChange={e => setSurveyData({...surveyData, age: e.target.value})}/>
 
-                <p>Gender</p>
-                    <select value={surveyData.gender} onChange={e => setSurveyData({...surveyData, gender: e.target.value})}>
+                <label htmlFor="gender">Gender</label>
+                    <select id="gender" value={surveyData.gender} onChange={e => setSurveyData({...surveyData, gender: e.target.value})}>
                         <option value="">--Please choose an option--</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                         <option value="pnta">Prefer not to answer</option>
                     </select>
 
-                <p>Country</p>
                     <CountrySelector countryHandler={countryHandler} displayCountry={displayCountry} />
 
-                <p>Rating</p>
                     <StarRating experience_rating={surveyData.experience_rating} setSurveyData={setSurveyData} surveyData={surveyData} />
                 
-                <p>Suggested Improvements</p>
-                    <textarea value={surveyData.suggested_improvements} onChange={e => setSurveyData({...surveyData, suggested_improvements: e.target.value})} />
-                    {errorMsg && <p>{errorMsg}</p>}
+                <label htmlFor="suggested-improvements">Suggested Improvements</label>
+                    <textarea id="suggested-improvements" value={surveyData.suggested_improvements} onChange={e => setSurveyData({...surveyData, suggested_improvements: e.target.value})} />
+                    
+                {errorMsg && <p>{errorMsg}</p>}
+                
                 <button onClick={onSubmitForm}>Submit</button>
             </form>
         </div>
