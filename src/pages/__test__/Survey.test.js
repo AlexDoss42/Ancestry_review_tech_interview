@@ -20,16 +20,36 @@ const typeIntoForm = ({ name, email }) => {
   };
 
   const clickSubmit = () => {
-    const submitBtnElement = screen.getByText("Submit");
+    const submitBtnElement = screen.getByRole("button");
     userEvent.click(submitBtnElement);
   };
 
 describe("Survey testing", () => {
 
+    it("should be able to type into name input", () => {
+      render(<Survey />);
+      const { nameInputElement } = typeIntoForm({ name: 'miguel' });
+      expect(nameInputElement.value).toBe('miguel');
+    });
+
+    it("should be able to type into email input", () => {
+      render(<Survey />);
+      const { emailInputElement } = typeIntoForm({ name: 'miguel', email: 'miguel@pedro.tech' });
+      expect(emailInputElement.value).toBe('miguel@pedro.tech');
+    });
+
+    it("should not have an error message to start with", () => {
+      render(<Survey />);
+      const errorMsgElement = screen.queryByText(/Name is required./i);
+      console.log(222, errorMsgElement);
+      expect(errorMsgElement).not.toBeInTheDocument();
+    }); 
+
     it("should show error messages if name is not entered", () => {
-        render(<Survey />)
+        render(<Survey />);
         clickSubmit();
-        console.log(123, screen.getByText(/Name is required./i))
-        expect(screen.getByText(/Name is required./i)).toBeInTheDocument();
-    }) 
+        const errorMsgElement = screen.getByText(/Name is required./i);
+        console.log(123, errorMsgElement);
+        expect(errorMsgElement).toBeInTheDocument();
+    });
 })
