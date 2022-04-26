@@ -62,8 +62,8 @@ const Survey = () => {
                 <label htmlFor="email">Email *REQUIRED</label>
                     <input type='email' id="email" value={surveyData.email} onChange={e => setSurveyData({...surveyData, email: e.target.value})}/>
 
-                <p>Age</p>
-                    <input type="number" value={surveyData.age} onChange={e => setSurveyData({...surveyData, age: e.target.value})}/>
+                    <label htmlFor="age">Age</label>
+                    <input type="number" id="age" value={surveyData.age} onChange={e => setSurveyData({...surveyData, age: e.target.value})}/>
 
                 <p>Gender</p>
                     <select value={surveyData.gender} onChange={e => setSurveyData({...surveyData, gender: e.target.value})}>

@@ -39,6 +39,13 @@ describe("Survey testing", () => {
       expect(emailInputElement.value).toBe('miguel@pedro.tech');
     });
 
+    it("should be able to type into age input", () => {
+      render(<Survey />);
+      const ageInputElement = screen.getByLabelText("Age");
+      userEvent.type(ageInputElement, "23");
+      expect(ageInputElement).toHaveValue(23);
+    });
+
     it("should not have an error message to start with", () => {
       render(<Survey />);
       const errorMsgElement = screen.queryByText(/Name is required./i);
@@ -75,4 +82,4 @@ describe("Survey testing", () => {
       const errorMsgElement = screen.queryByText(/the email you input is invalid./i);
       expect(errorMsgElement).not.toBeInTheDocument();
     });
-})
+});
