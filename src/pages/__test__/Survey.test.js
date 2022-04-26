@@ -42,14 +42,8 @@ describe("Survey testing", () => {
     it("should not have an error message to start with", () => {
       render(<Survey />);
       const errorMsgElement = screen.queryByText(/Name is required./i);
-      expect(errorMsgElement).toBe(null);
+      expect(errorMsgElement).not.toBeInTheDocument();
     }); 
-
-    it("should show the btn is in the doc", () => {
-      render(<Survey />);
-      const submitBtnElement = screen.getByRole("button");
-      expect(submitBtnElement).toBeInTheDocument();
-  });
 
     it("should show error messages if name is not entered", async () => {
         render(<Survey />);
@@ -57,4 +51,20 @@ describe("Survey testing", () => {
         const errorMsgElement = screen.getByText(/Name is required./i);
         expect(errorMsgElement).toBeInTheDocument();
     });
+
+    it("should show error messages if the email is not entered", async () => {
+      render(<Survey />);
+      await typeIntoForm({ name: 'miguel', email: '' });
+      await clickSubmit();
+      const errorMsgElement = screen.getByText(/the email you input is invalid./i);
+      expect(errorMsgElement).toBeInTheDocument();
+  });
+
+  it("should show error messages if the email is not valid", async () => {
+    render(<Survey />);
+    await typeIntoForm({ name: 'miguel', email: 'miguelgmail.test' });
+    await clickSubmit();
+    const errorMsgElement = screen.getByText(/the email you input is invalid./i);
+    expect(errorMsgElement).toBeInTheDocument();
+});
 })
