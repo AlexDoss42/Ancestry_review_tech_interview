@@ -21,6 +21,7 @@ const typeIntoForm = ({ name, email }) => {
 
   const clickSubmit = () => {
     const submitBtnElement = screen.getByRole("button");
+    console.log(333, submitBtnElement)
     userEvent.click(submitBtnElement);
   };
 
@@ -41,15 +42,14 @@ describe("Survey testing", () => {
     it("should not have an error message to start with", () => {
       render(<Survey />);
       const errorMsgElement = screen.queryByText(/Name is required./i);
-      console.log(222, errorMsgElement);
-      expect(errorMsgElement).not.toBeInTheDocument();
+      expect(errorMsgElement).toBe(null);
     }); 
 
     it("should show error messages if name is not entered", () => {
         render(<Survey />);
         clickSubmit();
         const errorMsgElement = screen.getByText(/Name is required./i);
-        console.log(123, errorMsgElement);
+        console.log(222, errorMsgElement);
         expect(errorMsgElement).toBeInTheDocument();
     });
 })
