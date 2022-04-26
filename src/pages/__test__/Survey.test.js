@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import '@testing-library/jest-dom'
 import Survey from '../Survey';
 
 const typeIntoForm = ({ name, email }) => {
@@ -21,7 +22,6 @@ const typeIntoForm = ({ name, email }) => {
 
   const clickSubmit = () => {
     const submitBtnElement = screen.getByRole("button");
-    console.log(333, submitBtnElement)
     userEvent.click(submitBtnElement);
   };
 
@@ -45,11 +45,16 @@ describe("Survey testing", () => {
       expect(errorMsgElement).toBe(null);
     }); 
 
-    it("should show error messages if name is not entered", () => {
+    it("should show the btn is in the doc", () => {
+      render(<Survey />);
+      const submitBtnElement = screen.getByRole("button");
+      expect(submitBtnElement).toBeInTheDocument();
+  });
+
+    it("should show error messages if name is not entered", async () => {
         render(<Survey />);
-        clickSubmit();
+        await clickSubmit();
         const errorMsgElement = screen.getByText(/Name is required./i);
-        console.log(222, errorMsgElement);
         expect(errorMsgElement).toBeInTheDocument();
     });
 })
