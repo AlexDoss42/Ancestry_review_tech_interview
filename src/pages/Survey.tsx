@@ -25,7 +25,7 @@ const Survey = () => {
     });
     const [errorMsg, setErrorMsg] = useState<string>("");
 
-    const onSubmitForm = async (e) => {
+    const onSubmitForm = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
         e.preventDefault();
         if(surveyData.customer_name.length < 3) {
             return setErrorMsg("Name is required.")
