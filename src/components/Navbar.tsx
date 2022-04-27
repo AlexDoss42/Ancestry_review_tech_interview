@@ -5,7 +5,7 @@ import './Navbar.css';
 const Navbar = (): JSX.Element => {
 
     return (
-        <div className='container'>
+        <div className='navbar-container'>
             <nav>
                 <h3>Ancestry</h3>
                 <ul>
