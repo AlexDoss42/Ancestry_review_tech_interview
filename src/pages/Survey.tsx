@@ -25,7 +25,7 @@ const Survey = () => {
     });
     const [errorMsg, setErrorMsg] = useState<string>("");
 
-    const onSubmitForm = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+    const onSubmitForm = (e) => {
         e.preventDefault();
         if(surveyData.customer_name.length < 3) {
             return setErrorMsg("Name is required.")
@@ -34,7 +34,7 @@ const Survey = () => {
           } 
         try {
             const body = surveyData;
-            await fetch("http://localhost:5000/api/survey", {
+            fetch("http://localhost:5000/api/survey", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body)
