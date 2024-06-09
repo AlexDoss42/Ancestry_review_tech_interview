@@ -21,4 +21,11 @@ input {
 
 button {
     margin: 8px 0;
+    background-color: #9cbe30;
+    border: none;
+    border-radius: 8px;
+    height: 60px;
+    font-size: 40px;
+    text-transform: uppercase;
+    color: #777;
 }
