@@ -4,6 +4,11 @@
     text-align: center;
 }
 
+.required {
+    color: red;
+    font-size: 13px;
+}
+
 form {
     text-align: center;
     margin: 0 auto;

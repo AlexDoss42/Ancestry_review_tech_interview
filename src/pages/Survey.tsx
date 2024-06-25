@@ -56,10 +56,10 @@ const Survey = () => {
             <h1>Thank you for helping us improve the site for you!</h1>
             
             <form>
-                <label htmlFor="name">Name *REQUIRED</label>
+                <label htmlFor="name">Name <span className='required'><sup>*</sup>REQUIRED</span></label>
                     <input type='text' id="name" value={surveyData.customer_name} onChange={e => setSurveyData({...surveyData, customer_name: e.target.value})}/>
 
-                <label htmlFor="email">Email *REQUIRED</label>
+                <label htmlFor="email">Email <span className='required'><sup>*</sup>REQUIRED</span></label>
                     <input type='email' id="email" value={surveyData.email} onChange={e => setSurveyData({...surveyData, email: e.target.value})}/>
 
                 <label htmlFor="age">Age</label>
